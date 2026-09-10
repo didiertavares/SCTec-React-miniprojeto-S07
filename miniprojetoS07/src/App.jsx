@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-
+import Carrinho from './pages/Carrinho'
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-
+      <Carrinho />
     </>
   )
 }

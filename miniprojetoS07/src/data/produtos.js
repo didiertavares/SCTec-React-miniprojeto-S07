@@ -1,4 +1,4 @@
-const catálogoProdutos = [
+export const catalogoProdutos = [
   {
     "id": 1,
     "nome": "Encordoamento Guitarra 0.10 Nickel Wound",
