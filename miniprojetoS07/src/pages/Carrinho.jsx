@@ -5,9 +5,9 @@ function Carrinho(){
 
     const produtosSelecionados = [
         catalogoProdutos[0],
-        catalogoProdutos[2],
+        catalogoProdutos[1],
+        catalogoProdutos[3],
         catalogoProdutos[4],
-        catalogoProdutos[6],
         catalogoProdutos[8]
     ]
     console.log(produtosSelecionados)
