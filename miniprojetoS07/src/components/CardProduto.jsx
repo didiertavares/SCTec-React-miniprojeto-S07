@@ -1,14 +1,15 @@
+import React from "react" 
 
-
-function CardProduto({id, nome, precoUnit, quantidade}){
+function CardProduto({id, nome, marca, precoUnit, quantidade}){
 
 
     return (
-        <div className="card-produto" key={id}>
+        <React.Fragment className="card-produto" key={id}>
             <h2>{nome}</h2>
-            <span>{precoUnit}</span>
+            <h3>{marca}</h3>
+            <span> R$ {precoUnit}</span>
             <span>{quantidade}</span>
-        </div>
+        </React.Fragment>
     )
 
 }
