@@ -41,7 +41,7 @@ function Carrinho(){
 
             <p>{produtosSelecionados.length} ítens no carrinho</p>
             <p>Valor total da compra: {totalCompra}</p>
-            <button>Confirmar compra</button>
+            <button id="btn-confirm-compra">Confirmar compra</button>
 
             <section className="listagem-cards-produtos">
                 {produtosSelecionados.map((produto) => (
