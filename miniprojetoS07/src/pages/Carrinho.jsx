@@ -20,10 +20,7 @@ function Carrinho(){
         (acc, item) => acc + (Number(item.preco)*Number(item.quantidade)), 0)
     console.log(totalCompra)
 
-    function irResumoCompra(){
 
-
-    }
     
     return (
         <>
@@ -44,7 +41,7 @@ function Carrinho(){
 
             <p>{produtosSelecionados.length} ítens no carrinho</p>
             <p>Valor total da compra: {totalCompra}</p>
-            <button onClick={irResumoCompra}>Confirmar compra</button>
+            <button>Confirmar compra</button>
 
             <section className="listagem-cards-produtos">
                 {produtosSelecionados.map((produto) => (
@@ -53,6 +50,7 @@ function Carrinho(){
                     id={produto.id}
                     imagem={produto.imagem}
                     nome={produto.nome}
+                    marca={produto.marca}
                     precoUnit={produto.preco}
                     quantidade={produto.quantidade}
                     />
