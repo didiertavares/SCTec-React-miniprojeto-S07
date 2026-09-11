@@ -1,15 +1,17 @@
 import React from "react" 
 
-function CardProduto({id, nome, marca, precoUnit, quantidade}){
+function CardProduto({id, nome, marca, imagem, precoUnit, quantidade}){
 
 
     return (
-        <React.Fragment className="card-produto" key={id}>
-            <h2>{nome}</h2>
-            <h3>{marca}</h3>
-            <span> R$ {precoUnit}</span>
-            <span>{quantidade}</span>
-        </React.Fragment>
+        <div className="card-produto" key={id}>
+            <img src={imagem} alt={nome} style={{ maxWidth: '200px', width: '100%', height: 'auto' }}/>
+            <h3>{nome}</h3>
+            <p>{marca}</p>
+            
+            <p>R$ {precoUnit.toFixed(2)}</p>
+            <p>{quantidade}</p>
+        </div>
     )
 
 }

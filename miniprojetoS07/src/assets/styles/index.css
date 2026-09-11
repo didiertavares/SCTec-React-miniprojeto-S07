@@ -109,3 +109,16 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.listagem-cards-produtos{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-produto{
+  display: flex;
+  flex-wrap: wrap;
+  border: 4px solid  white;
+  border-radius: 10px;
+}
