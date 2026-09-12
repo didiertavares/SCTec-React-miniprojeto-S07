@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { catalogoProdutos } from "../data/produtos"
 import CardProduto from "../components/CardProduto"
 import ResumoCompras from "../components/ResumoCompras"
@@ -21,6 +22,13 @@ function Carrinho(){
     console.log(totalCompra)
 
 
+    // function ConfirmarCarrinho() {
+    //     const navigate = useNavigate()
+    //     const handleCarrinho = () => {
+    //         navigate('/pagamento')      // Redireciona via JS
+    //     }
+    //   return <button onClick={handleCompra}>Finalizar Compra</button>
+    // }
     
     return (
         <>
