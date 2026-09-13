@@ -1,5 +1,5 @@
 
-function compararDigitosCartao(a){
+export function compararDigitosCartao(a){
 
     const numeroCartao = a.cartao
     console.log(numeroCartao)
@@ -11,10 +11,13 @@ function compararDigitosCartao(a){
     console.log(typeof digitosIguais)
     console.log(digitosIguais)
 
-    if (digitosIguais) {
-        console.log('dígitos todos iguais: Nº de cartão inválido!')
-        return
-    }
+    // digitosIguais ? rota para página de aviso de golpe : rota para sucesso transação 
+
+    // if (digitosIguais) {
+    //     console.log('dígitos todos iguais: Nº de cartão inválido!')
+    //     // rota para página de aviso de golpe
+    //     return
+    // }
 
 
 }
