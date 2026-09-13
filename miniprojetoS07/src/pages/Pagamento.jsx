@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { compararDigitosCartao } from "../utils/pagamento";
 
 
@@ -14,14 +14,24 @@ function Pagamento(){
 
     const formPreenchido = titular && cpf && cartao && cvv
 
+    const navigate = useNavigate()
+
     async function sendForm(dados){
 
         await new Promise((resolve) => setTimeout(resolve, 3000))
+        // await api.post('/checkout', dados)
         
         console.log(dados)
         console.log(dados.cartao)
 
         compararDigitosCartao(dados)
+        digitosIguais ? navigate('/falha') : navigate('/sucesso') 
+ 
+        // if (digitosIguais) {
+        //     console.log('dígitos todos iguais: Nº de cartão inválido!')
+        //     rota para página de aviso de golpe
+        //     return
+        // }
 
         reset()
 
@@ -67,6 +77,7 @@ function Pagamento(){
                 placeholder="1234-5678-9012-3456"
                     {...register('cartao', {
                         required: 'Nº de cartão obrigatório',
+                        minLength: {value: 16, message: 'Preencha os 16 dígitos do cartão'},
                         pattern: {
                             // expressão regular para validação do dado: cartão de crédito
                             value: /^\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}$/,
@@ -93,6 +104,22 @@ function Pagamento(){
                     })}
                 />
                 {errors.cvv && <span>{errors.cvv.message}</span>}
+
+                <label>CVV:</label>
+                <input
+                placeholder="mm/aa"
+                    {...register('validade', {
+                        required: 'Data de validade obrigatória',
+                        pattern: {
+                            // expressão regular para validação do dado: mês e ano de validade
+                            value: /^(0[1-9]|1[0-2])\/[0-9]{2}$/,
+                            message: 'Data inválida'
+                        },
+                        message: 'Data inválida'
+                    })}
+                />
+                {errors.validade && <span>{errors.validade.message}</span>}
+
 
                 <button type="submit" disabled={isSubmitting || !formPreenchido}>
                     {isSubmitting ? 'Processando Pagamento...' : 'Confirmar pagamento'}
