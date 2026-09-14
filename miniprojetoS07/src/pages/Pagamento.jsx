@@ -1,32 +1,41 @@
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { compararDigitosCartao } from "../utils/pagamento";
 
 
 
 function Pagamento(){
 
+    const [dadosForm, setDadosForm] = useLocalStorage('dados_pagamento', {})
+
     const {register, handleSubmit, reset, watch, formState: {errors, isSubmitting}} = useForm({
-        defaultValues: {titular: '', cpf: '', cartao: '', cvv: ''}
+        defaultValues: dadosForm
     })
 
-    const [titular, cpf, cartao, cvv] = watch(['titular', 'cpf', 'cartao', 'cvv'])
-
-    const formPreenchido = titular && cpf && cartao && cvv
-
+    const [titular, cpf, cartao, cvv, validade] = watch(['titular', 'cpf', 'cartao', 'cvv', 'validade'])
+    
     const navigate = useNavigate()
+
+    const formPreenchido = titular && cpf && cartao && cvv && validade
 
     async function sendForm(dados){
 
         await new Promise((resolve) => setTimeout(resolve, 3000))       // OK, funciona
-        // await api.post('/checkout', dados)
         
         console.log(dados)              // OK, funciona
-        console.log(dados.cartao)       // OK, funciona
+        console.log(dados.cartao)       // OK, funciona 
+        
+        setDadosForm({
+            titular: dados.titular,
+            cpf: dados.cpf,
+            cartao: dados.cartao,
+            cvv: dados.cvv,
+            validade: dados.validade
+        })
 
         const digitosIguais = compararDigitosCartao(dados)
-
-        // (digitosIguais) ? navigate('/falha') : navigate('/sucesso') 
  
         if (digitosIguais) {
             console.log('dígitos todos iguais: Nº de cartão inválido!')
