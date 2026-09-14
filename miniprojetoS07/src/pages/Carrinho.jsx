@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { catalogoProdutos } from "../data/produtos"
 import CardProduto from "../components/CardProduto"
-import ResumoCompras from "../components/ResumoCompras"
 
 
 function Carrinho(){
@@ -21,6 +20,8 @@ function Carrinho(){
         (acc, item) => acc + (Number(item.preco)*Number(item.quantidade)), 0)
     console.log(totalCompra)
 
+    const navigate = useNavigate()
+
 
     // function ConfirmarCarrinho() {
     //     const navigate = useNavigate()
@@ -29,27 +30,14 @@ function Carrinho(){
     //     }
     //   return <button onClick={handleCompra}>Finalizar Compra</button>
     // }
-    
+    // onClick={() => {navigate('/pagamento')}
     return (
         <>
             <h1>Seu carrinho de compras</h1>
-            {/* <div className="card-resumo-compra">
-                {produtosSelecionados.map((produto) => (
-                    <ResumoCompras
-                    key={produto.id}
-                    id={produto.id}
-                    nome={produto.nome}
-                    marca={produto.marca}
-                    precoUnit={produto.preco}
-                    quantidade={produto.quantidade}
-                    />
-                ))}
-            </div> */}
-
-
+ 
             <p>{produtosSelecionados.length} ítens no carrinho</p>
             <p>Valor total da compra: {totalCompra}</p>
-            <button id="btn-confirm-compra">Confirmar compra</button>
+            <button onClick={() => {navigate('/pagamento')}} id="btn-confirm-compra">Confirmar compra</button>
 
             <section className="listagem-cards-produtos">
                 {produtosSelecionados.map((produto) => (
@@ -71,3 +59,20 @@ function Carrinho(){
 }
 
 export default Carrinho
+
+
+
+
+           {/* <div className="card-resumo-compra">
+                {produtosSelecionados.map((produto) => (
+                    <ResumoCompras
+                    key={produto.id}
+                    id={produto.id}
+                    nome={produto.nome}
+                    marca={produto.marca}
+                    precoUnit={produto.preco}
+                    quantidade={produto.quantidade}
+                    />
+                ))}
+            </div> */}
+

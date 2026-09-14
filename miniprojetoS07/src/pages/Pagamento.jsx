@@ -18,20 +18,20 @@ function Pagamento(){
 
     async function sendForm(dados){
 
-        await new Promise((resolve) => setTimeout(resolve, 3000))
+        await new Promise((resolve) => setTimeout(resolve, 3000))       // OK, funciona
         // await api.post('/checkout', dados)
         
-        console.log(dados)
-        console.log(dados.cartao)
+        console.log(dados)              // OK, funciona
+        console.log(dados.cartao)       // OK, funciona
 
-        compararDigitosCartao(dados)
-        digitosIguais ? navigate('/falha') : navigate('/sucesso') 
+        const digitosIguais = compararDigitosCartao(dados)
+
+        // (digitosIguais) ? navigate('/falha') : navigate('/sucesso') 
  
-        // if (digitosIguais) {
-        //     console.log('dígitos todos iguais: Nº de cartão inválido!')
-        //     rota para página de aviso de golpe
-        //     return
-        // }
+        if (digitosIguais) {
+            console.log('dígitos todos iguais: Nº de cartão inválido!')
+            navigate('/falha')
+        } else {navigate('/sucesso')}
 
         reset()
 
@@ -47,18 +47,18 @@ function Pagamento(){
 
                 <label>Titular do cartão:</label>
                 <input
-                placeholder="nome(s) e sobrenome"
+                placeholder="nome(s) e sobrenome"           // OK, funciona
                     {...register('titular', {
                         required: 'Nome(s) e sobrenome do titular obrigatórios',
                         minLength: {value: 4, message: 'nome(s) e sobrenome completos do titular totalizam obrigatoriamente mais de 4 letras'},
-                        message: 'Digite nome(s) e sobrenome do titular do cartão'
+                        message: 'Informe nome(s) e sobrenome do titular do cartão'
                     })}
                 />
                 {errors.titular && <span>{errors.titular.message}</span>}
 
                 <label>CPF:</label>
                 <input
-                placeholder="123.456.789-00"
+                placeholder="123.456.789-00"                // OK, funciona
                     {...register('cpf', {
                         required: 'CPF obrigatório',
                         pattern: {
@@ -74,7 +74,7 @@ function Pagamento(){
 
                 <label>Nº do cartão:</label>
                 <input
-                placeholder="1234-5678-9012-3456"
+                placeholder="1234-5678-9012-3456"           // OK, funciona
                     {...register('cartao', {
                         required: 'Nº de cartão obrigatório',
                         minLength: {value: 16, message: 'Preencha os 16 dígitos do cartão'},
@@ -90,7 +90,7 @@ function Pagamento(){
 
                 <label>CVV:</label>
                 <input
-                placeholder="123"
+                placeholder="123"                           // OK, funciona
                     {...register('cvv', {
                         required: 'código de verificação obrigatório',
                         minLength: {value: 3, message: 'o código é composto de 3 dígitos'},
@@ -105,9 +105,9 @@ function Pagamento(){
                 />
                 {errors.cvv && <span>{errors.cvv.message}</span>}
 
-                <label>CVV:</label>
+                <label>Validade:</label>
                 <input
-                placeholder="mm/aa"
+                placeholder="mm/aa"                         // OK, funciona
                     {...register('validade', {
                         required: 'Data de validade obrigatória',
                         pattern: {
