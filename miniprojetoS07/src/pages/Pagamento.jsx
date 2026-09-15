@@ -50,7 +50,7 @@ function Pagamento(){
     return(
     
         <>
-            <h1>renderização Pagamento</h1>
+            <h1>Dados do pagamento</h1>
 
             <form onSubmit={handleSubmit(sendForm)} style={{ display: 'flex', flexDirection: 'column', gap: '12px'}}>
 
@@ -130,7 +130,7 @@ function Pagamento(){
                 {errors.validade && <span>{errors.validade.message}</span>}
 
 
-                <button type="submit" disabled={isSubmitting || !formPreenchido}>
+                <button type="submit" id='btn-process-pagmt' disabled={isSubmitting || !formPreenchido}>
                     {isSubmitting ? 'Processando Pagamento...' : 'Confirmar pagamento'}
                 </button>
 

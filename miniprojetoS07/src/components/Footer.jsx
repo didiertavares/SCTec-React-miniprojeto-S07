@@ -3,11 +3,12 @@
 function Footer(){
 
     return (
-        <div style={{ backgroundColor: 'black', color: 'white', textAlign: 'center', padding: '10px' }}>
-            <h3>Todos os direitos reservados © 2026</h3>
-            <h4>Desenvolvido por D. TAVARES</h4>
-            <h4>Florianópolis, SC</h4>
-        </div>
+        <footer style={{ backgroundColor: 'black', color: 'white', textAlign: 'center', padding: '10px' }}>
+            <h3>Orpheus Planet Ltda.</h3><br />
+            <p>Todos os direitos reservados © 2026</p>
+            <p>CNPJ: 00.000.000/0001-00</p>
+            <p>Florianópolis, SC - BRASIL</p>
+        </footer>
     )
 
 }

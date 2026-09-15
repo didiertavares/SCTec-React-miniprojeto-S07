@@ -82,8 +82,8 @@ export const catalogoProdutos = [
   },
   {
     "id": 10,
-    "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDvEOVK7mnqlZVgtBQbXr7lcbrSVbheh4pHrssBn2AA&s=10",
-    "nome": "Slide Bottleneck vidro",
+    "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2wyHaIaWY9kVxH8aVhfoh3j98ceOxcleeWjzMSBTkzw&s",
+    "nome": "Slide Bottleneck Chrome",
     "marca": "Dunlop",
     "tipo": "Acessórios",
     "preco": 38.00,

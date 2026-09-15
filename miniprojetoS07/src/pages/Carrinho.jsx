@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { catalogoProdutos } from "../data/produtos"
 import CardProduto from "../components/CardProduto"
+import Footer from '../components/Footer'
 
 
 function Carrinho(){
@@ -8,35 +9,28 @@ function Carrinho(){
     const produtosSelecionados = [
         catalogoProdutos[0],
         catalogoProdutos[1],
-        catalogoProdutos[3],
+        catalogoProdutos[2],
         catalogoProdutos[4],
-        catalogoProdutos[8]
+        catalogoProdutos[5],
+        catalogoProdutos[9]
     ]
     console.log(produtosSelecionados)
-    // console.log(typeof produtosSelecionados.item.preco)
-    // console.log(typeof produtosSelecionados.item.quantidade)
 
     const totalCompra = produtosSelecionados.reduce(
         (acc, item) => acc + (Number(item.preco)*Number(item.quantidade)), 0)
-    console.log(totalCompra)
+    console.log(totalCompra.toFixed(2))
 
     const navigate = useNavigate()
 
 
-    // function ConfirmarCarrinho() {
-    //     const navigate = useNavigate()
-    //     const handleCarrinho = () => {
-    //         navigate('/pagamento')      // Redireciona via JS
-    //     }
-    //   return <button onClick={handleCompra}>Finalizar Compra</button>
-    // }
-    // onClick={() => {navigate('/pagamento')}
+
     return (
         <>
-            <h1>Seu carrinho de compras</h1>
+            <h1>Detalhes da compra</h1>
  
-            <p>{produtosSelecionados.length} ítens no carrinho</p>
-            <p>Valor total da compra: {totalCompra}</p>
+            <p className='detalhes-compra'>{produtosSelecionados.length} ítens no carrinho</p>
+            <p className='detalhes-compra'>Valor total da compra:</p>
+            <h2 className='detalhes-compra'> R$ {totalCompra.toFixed(2)}</h2>
             <button onClick={() => {navigate('/pagamento')}} id="btn-confirm-compra">Confirmar compra</button>
 
             <section className="listagem-cards-produtos">
@@ -52,27 +46,10 @@ function Carrinho(){
                     />
                 ))}
             </section>
-        
+
         </>
     )
 
 }
 
 export default Carrinho
-
-
-
-
-           {/* <div className="card-resumo-compra">
-                {produtosSelecionados.map((produto) => (
-                    <ResumoCompras
-                    key={produto.id}
-                    id={produto.id}
-                    nome={produto.nome}
-                    marca={produto.marca}
-                    precoUnit={produto.preco}
-                    quantidade={produto.quantidade}
-                    />
-                ))}
-            </div> */}
-
