@@ -1,3 +1,11 @@
+## Link do vídeo de apresentação Projeto CheckOut M2S7:
+https://youtu.be/uz0KCPhKoww
+
+OBS: README EM CURSO DE REDAÇÃO. (só preciso ir dormir algumas horas...).
+estará pronto de manhã.
+obrigado pela compreensão
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
